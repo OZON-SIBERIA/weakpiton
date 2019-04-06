@@ -1,7 +1,19 @@
 <html>
+<head>
+    <meta charset="utf8">
+    <title>piton</title>
+    <style>
+        body {
+            background: aqua;
+            color: black;
+        }
+    </style>
+</head>
+<body>
 <center>
     <img src="https://cs8.pikabu.ru/images/big_size_comm/2016-04_4/146080718119713034.jpg" alt="Сорри, питон">
     </br>
+    <h1>
     <?php
     $current_timezone = new DateTimeZone("Asia/Vladivostok");
 
@@ -20,8 +32,7 @@
         echo("доброй ночи, питон");
     }
     ?>
+    </h1>
 </center>
+</body>
 </html>
-
-
-
