@@ -31,6 +31,7 @@
     } else {
         echo("доброй ночи, питон");
     }
+    echo $_SERVER['HTTP_USER_AGENT'];
     ?>
     </h1>
 </center>
