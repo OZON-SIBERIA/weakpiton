@@ -51,9 +51,11 @@
         while($row = mysqli_fetch_array($tasks)) {
             ?>
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td> <?php echo $i; ?> </td>
+        <td class = "task"> <?php echo $row['task']; ?> </td>
+        <td class="delete">
+            <a href="todolist_entry_page.php?del_task=<?php echo $row['id'] ?>">x</a>
+        </td>
     </tr>
     <?php
     $i++;
