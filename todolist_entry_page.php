@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Old Todolist</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
 <?php
 $connection = mysqli_connect('localhost', 'root', '122435606', 'todolist_database', '3306', '1050');
 $query_gettasks = 'SELECT * FROM tasks;';
@@ -22,6 +15,13 @@ if(isset($_POST['submit'])) {
     }
 }
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Old Todolist</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
 <div class="heading">
     <h2> Old Todolist for old pitons</h2>
 </div>
