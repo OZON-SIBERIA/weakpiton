@@ -11,7 +11,7 @@
         }
         else {
             $task = $_POST['task'];
-            $query_insertion ="INSERT INTO tasks (task) VALUES ('$task')";
+            $query_insertion ="INSERT INTO tasks (task) VALUES ($task)";
             $insertion = mysqli_query($connection, $query_insertion);
             header('location: todolist_entry_page.php');
         }
