@@ -4,7 +4,11 @@
         echo "Database Error";
     }
     $connection->set_charset('utf8');
-    $result = $connection->query("INSERT INTO tasks (task) VALUES ('Piton task')");
+    if (isset($_POST['submit'])) {
+        $task = $_POST['task'];
+        $insertion = $connection->query("INSERT INTO tasks (task) VALUES ('$task')");
+        header('location: todolist_entry_page.php');
+    }
 ?>
 
 <!DOCTYPE html>
