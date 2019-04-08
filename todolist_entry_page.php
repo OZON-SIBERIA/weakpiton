@@ -1,6 +1,6 @@
-    <?php
+    <?php/*
     $connection = mysqli_connect('localhost', 'root', '122435606', 'todolist_database', '3306', '1050');
-    $query_gettasks = 'SELECT * FROM tasks';
+    $query_get = 'SELECT * FROM tasks';
     $errors = "";
     if(isset($_POST['submit'])) {
         if(empty($_POST['task'])) {
@@ -13,7 +13,7 @@
             header('location: todolist_entry_page.php');
         }
     }
-    ?>
+    */?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,13 +46,13 @@
     </thead>
     <tbody>
     <?php
-        $tasks = mysqli_query($connection, $query_gettasks);
+        /*$tasks = mysqli_query($connection, $query_get);*/
         $i =1;
-        while($row = mysqli_fetch_array($tasks)) {
+        /*while($row = mysqli_fetch_array($tasks)) {*/
             ?>
     <tr>
         <td> <?php echo $i; ?> </td>
-        <td class = "task"> <?php echo $row['task']; ?> </td>
+        <td class = "task"> <?php/* echo $row['task'];*/ ?> </td>
         <td class= "delete">
 
         </td>
