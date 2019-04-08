@@ -1,3 +1,12 @@
+<?php
+    $connection = new mysqli("127.0.0.1", "root", "122435", "todolist_database");
+    if ($connection->connect_errno) {
+        echo "Database Error";
+    }
+    $connection->set_charset('utf8');
+    $result = $connection->query("INSERT INTO tasks (task) VALUES ('Piton task')");
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +21,7 @@
     <input type="text" name="task" class="task_input">
     <button type="submit"  name="submit" id="add_button" class="add_button">Add Task</button>
 </form>
-<table id="tasks_table" border="2" bgcolor="#f0ffff" rules="rows">
+<table id="tasks_table">
     <thead>
     <tr>
         <th>id</th>
@@ -22,10 +31,9 @@
     </thead>
     <tbody>
     <tr>
-        <td></td>
-        <td class = "task"></td>
-        <td class= "delete">
-        </td>
+        <td class="id"> 1 </td>
+        <td class = "task"> Placeholder </td>
+        <td class= "delete"> <a href="#">x</a></td>
     </tr>
     </tbody>
 </table>
