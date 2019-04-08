@@ -7,13 +7,12 @@
     $errors = "";
     if(isset($_POST['submit'])) {
         if(empty($_POST['task'])) {
-            $errors = "You mut fill in the task";
+            $errors = "You must fill in the task";
         }
         else {
             $task = $_POST['task'];
             $query_insertion ="INSERT INTO tasks (task) VALUES ($task);";
             $insertion = mysqli_query($connection, $query_insertion);
-            header('location: todolist_entry_page.php');
         }
     }
 ?>
@@ -53,7 +52,7 @@
     <tr>
         <td> <?php echo $i; ?> </td>
         <td class = "task"> <?php echo $row['task']; ?> </td>
-        <td class="delete">
+        <td class= "delete">
             <a href="todolist_entry_page.php?del_task=<?php echo $row['id'] ?>">x</a>
         </td>
     </tr>
