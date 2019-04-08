@@ -1,20 +1,3 @@
-<?php
-$connection = mysqli_connect('localhost', 'root', '122435606', 'todolist_database', '3306', '1050');
-$query_gettasks = 'SELECT * FROM tasks;';
-$query_delete = 'DELETE * FROM tasks;';
-$errors = "";
-if(isset($_POST['submit'])) {
-    if(empty($_POST['task'])) {
-        $errors = "You must fill in the task";
-    }
-    else {
-        $task = $_POST['task'];
-        $query_insertion ="INSERT INTO tasks (task) VALUES ($task);";
-        $insertion = mysqli_query($connection, $query_insertion);
-        header('location: todolist_entry_page.php');
-    }
-}
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,6 +10,21 @@ if(isset($_POST['submit'])) {
 </div>
 <form method="post" action="todolist_entry_page.php" class="input_form">
     <?php
+    $connection = mysqli_connect('localhost', 'root', '122435606', 'todolist_database', '3306', '1050');
+    $query_gettasks = 'SELECT * FROM tasks;';
+    $query_delete = 'DELETE * FROM tasks;';
+    $errors = "";
+    if(isset($_POST['submit'])) {
+        if(empty($_POST['task'])) {
+            $errors = "You must fill in the task";
+        }
+        else {
+            $task = $_POST['task'];
+            $query_insertion ="INSERT INTO tasks (task) VALUES ($task);";
+            $insertion = mysqli_query($connection, $query_insertion);
+            header('location: todolist_entry_page.php');
+        }
+    }
         if (isset($errors)) {
             ?>
     <p> <?php echo $errors; ?> </p>p>
