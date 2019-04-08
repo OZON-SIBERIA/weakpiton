@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <?php
-    $connection = mysqli_connect('localhost', '', '', 'todolist_database', '3306');
+    $connection = mysqli_connect('localhost', 'root', '', 'todolist_database', '3306');
     $query_gettasks = 'SELECT * FROM tasks;';
     $query_delete = 'DELETE * FROM tasks;';
     $errors = "";
