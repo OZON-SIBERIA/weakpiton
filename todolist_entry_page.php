@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Old Todolist</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-<div class="heading">
-    <h2> Old Todolist for old pitons</h2>
-</div>
-<form method="post" action="todolist_entry_page.php" class="input_form">
     <?php
     $connection = mysqli_connect('localhost', 'root', '122435606', 'todolist_database', '3306', '1050');
     $query_gettasks = 'SELECT * FROM tasks';
@@ -24,6 +13,20 @@
             header('location: todolist_entry_page.php');
         }
     }
+    ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Old Todolist</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div class="heading">
+    <h2> Old Todolist for old pitons</h2>
+</div>
+<form method="post" action="todolist_entry_page.php" class="input_form">
+    <?php
         if (isset($errors)) {
             ?>
     <p> <?php echo $errors; ?> </p>p>
