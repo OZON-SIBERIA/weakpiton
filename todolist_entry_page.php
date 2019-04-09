@@ -1,14 +1,18 @@
 <?php
-    $connection = new mysqli("127.0.0.1", "root", "122435", "todolist_database");
-    if ($connection->connect_errno) {
-        echo "Database Error";
-    }
-    $connection->set_charset('utf8');
-    if (isset($_POST['submit'])) {
-        $task = $_POST['task'];
-        $insertion = $connection->query("INSERT INTO tasks (task) VALUES ('$task')");
-        header('location: todolist_entry_page.php');
-    }
+function force_exit($msg) {
+    echo $msg;
+    die();
+}
+$connection = new mysqli("127.0.0.1", "root", "122435606", "todolist_database");
+if ($connection->connect_errno) {
+    force_exit("Database Error" . $connection->connect_error);
+}
+$connection->set_charset('utf8');
+if (isset($_POST['submit'])) {
+    $task = $_POST['task'];
+    $insertion = $connection->query("INSERT INTO tasks (task) VALUES ('$task')");
+    mysqli_close('$connection');
+}
 ?>
 
 <!DOCTYPE html>
