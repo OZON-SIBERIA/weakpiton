@@ -1,20 +1,13 @@
 <?php
-function force_exit($msg) {
-    echo $msg;
-    die();
-}
-$connection = new mysqli("127.0.0.1", "root", "122435606", "todolist_database");
-if ($connection->connect_errno) {
-    force_exit("Database Error" . $connection->connect_error);
-}
-$connection->set_charset('utf8');
-if (isset($_POST['submit'])) {
-    $task = $_POST['task'];
-    $insertion = $connection->query("INSERT INTO tasks (task) VALUES ('$task')");
-    mysqli_close('$connection');
-}
+require_once "db_settings.php";
+    try {
+        $DBH = new PDO("mysql:$host;dbname=$dbname", $user, $pass);
+    }
+    catch (PDOException $msg) {
+        echo $msg->getMessage();
+    }
+    $STH = $DBH->prepare("INSERT INTO tasks (task) VALUES (:task)");
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,6 +21,18 @@ if (isset($_POST['submit'])) {
 <form method="post" action="todolist_entry_page.php" class="input_form">
     <input type="text" name="task" class="task_input">
     <button type="submit"  name="submit" id="add_button" class="add_button">Add Task</button>
+    <?php
+
+    if (isset($_POST['submit'])) {
+        if (empty($_POST['task'])) {
+            $input_error = "Enter task, would you kindly";
+        }
+        else {
+            $task = $_POST['task'];
+            $STH->execute(':task => $task');
+        }
+    }
+    ?>
 </form>
 <table id="tasks_table">
     <thead>
