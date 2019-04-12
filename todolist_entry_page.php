@@ -48,18 +48,17 @@ require_once "db_settings.php";
     </thead>
     <tbody>
     <?php
-        $i = 1;
         $selection->execute();
         while($row = $selection->fetch(PDO::FETCH_ASSOC)) {
-            $data = $row[$i];
     ?>
     <tr>
+        <?php foreach ($row as $col_value) { ?>
         <td class = "id"> <?php echo $i; ?> </td>
-        <td class = "task"> <?php echo $data; ?> </td>
+        <td class = "task"> <?php echo $col_value; ?> </td>
         <td class = "delete"> <a href="#">x</a></td>
+        <?php } ?>
     </tr>
     <?php
-        $i++;
         }
     ?>
     </tbody>
