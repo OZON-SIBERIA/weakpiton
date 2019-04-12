@@ -19,6 +19,10 @@ require_once "db_settings.php";
     <h2> Old Todolist for old pitons</h2>
 </div>
 <form method="post" action="todolist_entry_page.php" class="input_form">
+    <?php
+        if (isset($errors)) {
+    ?> <p> <?php echo $errors; ?></p>
+    <?php ) ?>
     <input type="text" name="task" class="task_input">
     <button type="submit"  name="submit" id="add_button" class="add_button">Add Task</button>
     <?php
