@@ -6,7 +6,8 @@ require_once "db_settings.php";
     catch (PDOException $msg) {
         echo $msg->getMessage();
     }
-    $STH = $DBH->prepare("INSERT INTO tasks (task) VALUES (:task)");
+    $insertion = $DBH->prepare("INSERT INTO tasks (task) VALUES (:task)");
+    $selection = $DBH->prepare("SELECT task FROM tasks", array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,14 +27,13 @@ require_once "db_settings.php";
     <input type="text" name="task" class="task_input">
     <button type="submit"  name="submit" id="add_button" class="add_button">Add Task</button>
     <?php
-
     if (isset($_POST['submit'])) {
         if (empty($_POST['task'])) {
             $input_error = "Enter task, would you kindly";
         }
         else {
             $task = $_POST['task'];
-            $STH->execute(':task => $task');
+            $insertion->execute(':task => $task');
         }
     }
     ?>
@@ -47,11 +47,21 @@ require_once "db_settings.php";
     </tr>
     </thead>
     <tbody>
+    <?php
+        $i = 1;
+        $selection->execute();
+        while($row = $selection->fetch(PDO::FETCH_ASSOC)) {
+            $data = $row[$i];
+    ?>
     <tr>
-        <td class="id"> 1 </td>
-        <td class = "task"> Placeholder </td>
-        <td class= "delete"> <a href="#">x</a></td>
+        <td class = "id"> <?php echo $i; ?> </td>
+        <td class = "task"> <?php echo $row['task']; ?> </td>
+        <td class = "delete"> <a href="#">x</a></td>
     </tr>
+    <?php
+        $i++;
+        }
+    ?>
     </tbody>
 </table>
 </body>
