@@ -55,7 +55,7 @@ require_once "db_settings.php";
     ?>
     <tr>
         <td class = "id"> <?php echo $i; ?> </td>
-        <td class = "task"> <?php echo $row['task']; ?> </td>
+        <td class = "task"> <?php echo $data; ?> </td>
         <td class = "delete"> <a href="#">x</a></td>
     </tr>
     <?php
