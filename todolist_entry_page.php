@@ -17,7 +17,7 @@ require_once "db_settings.php";
 </head>
 <body>
 <div class="heading">
-    <h2> Old Todolist for old pitons</h2>
+    <h2> Old todolist for old pitons</h2>
 </div>
 <form method="post" action="todolist_entry_page.php" class="input_form">
     <?php
@@ -29,11 +29,11 @@ require_once "db_settings.php";
     <?php
     if (isset($_POST['submit'])) {
         if (empty($_POST['task'])) {
-            $input_error = "Enter task, would you kindly";
+            $input_error = "Would you kindly, enter the task";
         }
         else {
             $task = $_POST['task'];
-            $insertion->execute(':task => $task');
+            $insertion->execute(['task' => $task]);
         }
     }
     ?>
