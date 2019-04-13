@@ -7,7 +7,7 @@ require_once "db_settings.php";
         echo $msg->getMessage();
     }
     $insertion = $DBH->prepare("INSERT INTO tasks (task) VALUES (:task)");
-    $selection = $DBH->prepare("SELECT task FROM tasks", array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+    $selection = $DBH->prepare("SELECT task FROM tasks");
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,17 +51,7 @@ require_once "db_settings.php";
         $selection->execute();
         $i = 1;
         while($row = $selection->fetch(PDO::FETCH_ASSOC)) {
-    ?>
-    <tr>
-        <?php foreach ($row as $col_value) { ?>
-        <td class = "id"> <?php echo $i; ?> </td>
-        <td class = "task"> <?php echo $col_value; ?> </td>
-        <td class = "delete"> <a href="#">x</a></td>
-        <?php
-            $i++;
-        } ?>
-    </tr>
-    <?php
+            var_dump($row);
         }
     ?>
     </tbody>
