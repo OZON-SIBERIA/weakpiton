@@ -49,6 +49,7 @@ require_once "db_settings.php";
     <tbody>
     <?php
         $selection->execute();
+        $i = 1;
         while($row = $selection->fetch(PDO::FETCH_ASSOC)) {
     ?>
     <tr>
@@ -56,7 +57,9 @@ require_once "db_settings.php";
         <td class = "id"> <?php echo $i; ?> </td>
         <td class = "task"> <?php echo $col_value; ?> </td>
         <td class = "delete"> <a href="#">x</a></td>
-        <?php } ?>
+        <?php
+            $i++;
+        } ?>
     </tr>
     <?php
         }
