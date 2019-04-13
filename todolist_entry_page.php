@@ -50,9 +50,8 @@ require_once "db_settings.php";
     <?php
         $selection->execute();
         $i = 1;
-        while($row = $selection->fetch(PDO::FETCH_ASSOC)) {
-            var_dump($row);
-        }
+        $row = $selection->fetchAll(PDO::FETCH_ASSOC);
+        var_dump($row);
     ?>
     </tbody>
 </table>
