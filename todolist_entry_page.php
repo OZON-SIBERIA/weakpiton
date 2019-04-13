@@ -55,7 +55,7 @@ require_once "db_settings.php";
         /*$selection->execute();
         $i = 1;
         $row = $selection->fetchAll(PDO::FETCH_ASSOC);*/
-        $row = $DBH->query("SELECT * FROM todolist_database.tasks", PDO::FETCH_ASSOC)->execute();
+        $row = $DBH->query("SELECT * FROM todolist_database.tasks", PDO::FETCH_ASSOC)->fetchAll();
         var_dump($row);
 
     ?>
