@@ -4,7 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 require_once "db_settings.php";
     try {
-        $DBH = new PDO("mysql:$host;dbname=$dbname", $user, $pass);
+        $DBH = new PDO("mysql:$host;dbname=todolist_database", $user, $pass);
         $DBH->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
     catch (PDOException $msg) {
