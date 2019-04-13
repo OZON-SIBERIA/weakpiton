@@ -10,8 +10,8 @@ require_once "db_settings.php";
     catch (PDOException $msg) {
         echo $msg->getMessage();
     }
-    $insertion = $DBH->prepare("INSERT INTO tasks (task) VALUES (:task)");
-    $selection = $DBH->prepare("SELECT task FROM tasks");
+    $insertion = $DBH->prepare("INSERT INTO todolist_database.tasks (task) VALUES (:task)");
+    $selection = $DBH->prepare("SELECT task FROM todolist_database.tasks", PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html>
@@ -54,8 +54,9 @@ require_once "db_settings.php";
     <?php
         /*$selection->execute();
         $i = 1;
-        $row = $selection->fetchAll(PDO::FETCH_ASSOC);*/
-        $rows = $DBH->query("SELECT * FROM todolist_database.tasks", PDO::FETCH_ASSOC)->fetchAll();
+        $row = $selection->fetchAll(PDO::FETCH_ASSOC);
+        $rows = $DBH->query("SELECT * FROM todolist_database.tasks", PDO::FETCH_ASSOC)->fetchAll();*/
+        $rows = $selection->fetchAll();
         /*var_dump($row);*/
         foreach ($rows as $row) {
             echo $row['task'];
