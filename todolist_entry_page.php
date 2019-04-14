@@ -11,7 +11,7 @@ require_once "db_settings.php";
         echo $msg->getMessage();
     }
     $insertion = $DBH->prepare("INSERT INTO todolist_database.tasks (task) VALUES (:task)");
-    $selection = $DBH->prepare("SELECT task FROM todolist_database.tasks", PDO::FETCH_ASSOC);
+    $selection = $DBH->prepare("SELECT task FROM todolist_database.tasks");
 ?>
 <!DOCTYPE html>
 <html>
@@ -56,7 +56,7 @@ require_once "db_settings.php";
         $i = 1;
         $row = $selection->fetchAll(PDO::FETCH_ASSOC);
         $rows = $DBH->query("SELECT * FROM todolist_database.tasks", PDO::FETCH_ASSOC)->fetchAll();*/
-        $rows = $selection->execute()->fetchAll();
+        $rows = $selection->execute()->fetchAll(PDO::FETCH_ASSOC);
         /*var_dump($row);*/
         foreach ($rows as $row) {
             echo $row['task'];
