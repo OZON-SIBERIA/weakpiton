@@ -30,7 +30,7 @@ require_once "db_settings.php";
     <?php } ?>
     <input type="text" name="task" class="task_input">
     <button type="submit"  name="submit" id="add_button" class="add_button">Add Task</button>
-    <?php
+    <H><?php
     if (!empty($_POST['submit'])) {
         if (empty($_POST['task'])) {
             $input_error = "Would you kindly, enter the task";
@@ -42,6 +42,7 @@ require_once "db_settings.php";
         }
     }
     ?>
+    </H>
 </form>
 <table id="tasks_table">
     <thead>
