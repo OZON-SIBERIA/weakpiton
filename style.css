@@ -70,6 +70,14 @@ tr:hover {
 .delete{
     text-align: center;
 }
+
+.id{
+    text-align: center;
+}
+
+.selection{
+    text-align: center;
+}
 .delete a{
     color: white;
     background: #a52a2a;

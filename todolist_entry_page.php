@@ -64,8 +64,8 @@ require_once "db_settings.php";
             $i = 1;
             /*var_dump($row);*/
             foreach ($rows as $row) { ?>
-    <tr> <td><?php echo $i; $i++; ?> </td>
-            <td> <?php echo $row['task']; ?> </td>
+    <tr> <td class="id"><?php echo $i; $i++; ?> </td>
+            <td class="selection"> <?php echo $row['task']; ?> </td>
             <td class="delete"> <a>x</a> </td>
                 <?php echo "<br/>"; ?>
     </tr> <?php } ?>
