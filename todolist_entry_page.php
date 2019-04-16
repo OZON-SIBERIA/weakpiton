@@ -34,6 +34,7 @@ require_once "db_settings.php";
     if (!empty($_POST['submit'])) {
         if (empty($_POST['task'])) {
             $input_error = "Would you kindly, enter the task";
+            echo $input_error;
         }
         else {
             $task = $_POST['task'];
@@ -57,14 +58,12 @@ require_once "db_settings.php";
         $row = $selection->fetchAll(PDO::FETCH_ASSOC);
         $rows = $DBH->query("SELECT * FROM todolist_database.tasks", PDO::FETCH_ASSOC)->fetchAll();*/
 
-
-
             $selection->execute();
             $rows = $selection->fetchAll(PDO::FETCH_ASSOC);
             $i = 1;
             /*var_dump($row);*/
             foreach ($rows as $row) { ?>
-    <tr> <td class="id"><?php echo $i; $i++; ?> </td>
+    <tr>    <td class="id"><?php echo $i; $i++; ?> </td>
             <td class="selection"> <?php echo $row['task']; ?> </td>
             <td class="delete"> <a>x</a> </td>
                 <?php echo "<br/>"; ?>
