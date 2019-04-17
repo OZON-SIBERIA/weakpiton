@@ -20,8 +20,8 @@ require_once "db_settings.php";
         header("Location: /todolist_entry_page.php");
         exit;
     }
-    if (!empty($_GET["delete_task"])) {
-        $id = $_GET["delete_task"];
+    if (!empty($_GET["id"])) {
+        $id = $_GET["id"];
         $deletion->bindParam(':id', $id);
         $deletion->execute();
     }
