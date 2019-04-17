@@ -21,9 +21,9 @@ require_once "db_settings.php";
         header("Location: /todolist_entry_page.php");
         exit;
     }
-    if (!empty($_GET["del"])) {
-        $id = $_GET["del"];
-        $deletion->bindParam(':id', $id);
+    if (!empty($_POST["del_id"])) {
+        $del_id = $_POST["del_id"];
+        $deletion->bindParam(':id', $del_id);
         $deletion->execute();
     }
 ?>
@@ -65,7 +65,7 @@ require_once "db_settings.php";
             <td class="delete">
                 <a href="todolist_entry_page.php?del_id=<?php echo $row['id']; ?>" class="del_btn">Delete</a>
             </td>
-            <input  name="del_id" type="hidden" value="<?=$row['id']; ?>">
+            <input  name="del_id" type="hidden" value="<?=$row['id']; ?>" class="del_id">
             <?php echo "<br/>"; ?>
         </tr> <?php } ?>
     </tbody>
