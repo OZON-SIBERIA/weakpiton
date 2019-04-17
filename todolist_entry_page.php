@@ -53,8 +53,8 @@ require_once "db_settings.php";
             $selection->execute();
             $rows = $selection->fetchAll(PDO::FETCH_ASSOC);
             $i = 1;
-        if (!empty($_GET["del"])) {
-            $id = $_GET["del"];
+        if (!empty($_POST["del_id"])) {
+            $id = $_POST["del_id"];
             $deletion->bindParam(':id', $id);
             $deletion->execute();
             exit;
@@ -64,6 +64,7 @@ require_once "db_settings.php";
             <td class="id"><?php echo $i; $i++; ?> </td>
             <td class="selection"> <?php echo $row['task']; ?> </td>
             <td class="delete"> <a href="todolist_entry_page.php?del=<?php echo $row['id'] ?>">x</a> </td>
+            <input type="hidden" name="del_id" value="<?=$row['id']; ?>">
             <?php echo "<br/>"; ?>
         </tr> <?php } ?>
     </tbody>
