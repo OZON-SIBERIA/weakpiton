@@ -12,7 +12,7 @@ require_once "db_settings.php";
     }
     $insertion = $DBH->prepare("INSERT INTO todolist_database.tasks (task) VALUES (:task)");
     $selection = $DBH->prepare("SELECT * FROM todolist_database.tasks");
-    $deletion = $DBH->prepare("DELETE FROM todolist_database.tasks WHERE (id)=(:id) LIMIT 1");
+    $deletion = $DBH->prepare("DELETE FROM todolist_database.tasks WHERE (id)=(:id)");
 
     if (!empty($_POST["task"])) {
         $task = $_POST["task"];
