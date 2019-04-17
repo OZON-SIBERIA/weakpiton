@@ -38,7 +38,7 @@ require_once "db_settings.php";
         }
         else {
             $task = $_POST['task'];
-            $insertion->bindParam(":task", $task);
+            $insertion->bindParam(':task', $task);
             $insertion->execute();
         }
     }
