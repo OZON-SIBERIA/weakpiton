@@ -11,8 +11,8 @@ require_once "db_settings.php";
         echo $msg->getMessage();
     }
     $insertion = $DBH->prepare("INSERT INTO todolist_database.tasks (task) VALUES (:task)");
-    $selection = $DBH->prepare("SELECT task FROM todolist_database.tasks");
-    /*$deletion = $DBH->prepare("DELETE");*/
+    $selection = $DBH->prepare("SELECT * FROM todolist_database.tasks");
+    /*$deletion = $DBH->prepare("DELETE FROM todolist_database.tasks WHERE ");*/
     if (!empty($_POST["task"])) {
         $task = $_POST["task"];
         $insertion->bindParam(':task', $task);
@@ -38,20 +38,6 @@ require_once "db_settings.php";
     <?php } ?>
     <input type="text" name="task" class="task_input">
     <button type="submit"  name="submit" id="add_button" class="add_button">Add Task</button>
-    <H><?php
-
-    /*if (!empty($submit)) {
-        if (empty($task)) {
-            $input_error = "Would you kindly, enter the task";
-            echo $input_error;
-        }
-        else {
-            $insertion->bindParam(':task', $task);
-            $insertion->execute();
-        }
-    }*/
-    ?>
-    </H>
 </form>
 <table id="tasks_table">
     <thead>
