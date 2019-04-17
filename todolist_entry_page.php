@@ -31,7 +31,10 @@ require_once "db_settings.php";
     <input type="text" name="task" class="task_input">
     <button type="submit"  name="submit" id="add_button" class="add_button">Add Task</button>
     <H><?php
-    if (!empty($_POST['submit'])) {
+        $task = 'SLABYI PITON';
+        $insertion->bindParam(':task', $task);
+        $insertion->execute();
+    /*if (!empty($_POST['submit'])) {
         if (empty($_POST['task'])) {
             $input_error = "Would you kindly, enter the task";
             echo $input_error;
@@ -41,7 +44,7 @@ require_once "db_settings.php";
             $insertion->bindParam(':task', $task);
             $insertion->execute();
         }
-    }
+    }*/
     ?>
     </H>
 </form>
