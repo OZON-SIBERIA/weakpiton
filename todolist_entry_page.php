@@ -24,7 +24,6 @@ require_once "db_settings.php";
         $id = $_GET['delete_task'];
         $deletion->bindParam(':id', $id);
         $deletion->execute();
-        exit;
     }
 ?>
 <!DOCTYPE html>
