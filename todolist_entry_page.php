@@ -32,8 +32,12 @@ require_once "db_settings.php";
     <input type="text" name="task" class="task_input">
     <button type="submit"  name="submit" id="add_button" class="add_button">Add Task</button>
     <H><?php
-        $task = $_POST['task'];
-        $submit = $_POST['submit'];
+        $task = $_POST["task"];
+        $submit = $_POST["submit"];
+        /*if (isset($task)) {
+            $insertion->bindParam(':task', $task);
+            $insertion->execute();
+        }*/
     if (!empty($submit)) {
         if (empty($task)) {
             $input_error = "Would you kindly, enter the task";
