@@ -34,11 +34,13 @@ require_once "db_settings.php";
     <H><?php
         $task = $_POST["task"];
         $submit = $_POST["submit"];
-        /*if (isset($task)) {
-            $insertion->bindParam(':task', $task);
-            $insertion->execute();
-        }*/
-    if (!empty($submit)) {
+        if (isset($submit)) {
+            if (isset($task)) {
+                $insertion->bindParam(':task', $task);
+                $insertion->execute();
+            }
+        }
+    /*if (!empty($submit)) {
         if (empty($task)) {
             $input_error = "Would you kindly, enter the task";
             echo $input_error;
@@ -47,7 +49,7 @@ require_once "db_settings.php";
             $insertion->bindParam(':task', $task);
             $insertion->execute();
         }
-    }
+    }*/
     ?>
     </H>
 </form>
