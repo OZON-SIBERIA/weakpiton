@@ -13,6 +13,7 @@ require_once "db_settings.php";
     $insertion = $DBH->prepare("INSERT INTO todolist_database.tasks (task) VALUES (:task)");
     $selection = $DBH->prepare("SELECT * FROM todolist_database.tasks");
     $deletion = $DBH->prepare("DELETE FROM todolist_database.tasks WHERE 'id'=:id LIMIT 1");
+
     if (!empty($_POST["task"])) {
         $task = $_POST["task"];
         $insertion->bindParam(':task', $task);
@@ -20,12 +21,10 @@ require_once "db_settings.php";
         header("Location: /todolist_entry_page.php");
         exit;
     }
-    if (!empty($_POST["del_id"])) {
-        $id = $_POST["del_id"];
+    if (!empty($_GET["del"])) {
+        $id = $_GET["del"];
         $deletion->bindParam(':id', $id);
         $deletion->execute();
-        header("Location: /todolist_entry_page.php");
-        exit;
     }
 ?>
 <!DOCTYPE html>
@@ -63,7 +62,9 @@ require_once "db_settings.php";
         <tr>
             <td class="id"><?php echo $i; $i++; ?> </td>
             <td class="selection"> <?php echo $row['task']; ?> </td>
-            <button name ="delete_button" type="submit" value="del_id">  </button>
+            <td class="delete">
+                <a href="todolist_entry_page.php.php?del_id=<?php echo $row['id']; ?>" class="del_btn">Delete</a>
+            </td>
             <input  name="del_id" type="hidden" value="<?=$row['id']; ?>">
             <?php echo "<br/>"; ?>
         </tr> <?php } ?>
