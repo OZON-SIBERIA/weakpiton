@@ -20,7 +20,13 @@ require_once "db_settings.php";
         header("Location: /todolist_entry_page.php");
         exit;
     }
-
+    if (!empty($_POST["del_id"])) {
+        $id = $_POST["del_id"];
+        $deletion->bindParam(':id', $id);
+        $deletion->execute();
+        header("Location: /todolist_entry_page.php");
+        exit;
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -53,18 +59,12 @@ require_once "db_settings.php";
             $selection->execute();
             $rows = $selection->fetchAll(PDO::FETCH_ASSOC);
             $i = 1;
-        if (!empty($_POST["del_id"])) {
-            $id = $_POST["del_id"];
-            $deletion->bindParam(':id', $id);
-            $deletion->execute();
-            exit;
-        }
         foreach ($rows as $row) { ?>
         <tr>
             <td class="id"><?php echo $i; $i++; ?> </td>
             <td class="selection"> <?php echo $row['task']; ?> </td>
-            <td class="delete"> <a href="todolist_entry_page.php?del=<?php echo $row['id'] ?>">x</a> </td>
-            <input type="hidden" name="del_id" value="<?=$row['id']; ?>">
+            <button name ="delete_button" type="submit" value="del_id">  </button>
+            <input  name="del_id" type="hidden" value="<?=$row['id']; ?>">
             <?php echo "<br/>"; ?>
         </tr> <?php } ?>
     </tbody>
