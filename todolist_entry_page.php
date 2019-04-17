@@ -63,7 +63,7 @@ require_once "db_settings.php";
             <td class="id"><?php echo $i; $i++; ?> </td>
             <td class="selection"> <?php echo $row['task']; ?> </td>
             <td class="delete">
-                <a href="todolist_entry_page.php.php?del_id=<?php echo $row['id']; ?>" class="del_btn">Delete</a>
+                <a href="todolist_entry_page.php?del_id=<?php echo $row['id']; ?>" class="del_btn">Delete</a>
             </td>
             <input  name="del_id" type="hidden" value="<?=$row['id']; ?>">
             <?php echo "<br/>"; ?>
