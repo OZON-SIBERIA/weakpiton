@@ -20,11 +20,7 @@ require_once "db_settings.php";
         header("Location: /todolist_entry_page.php");
         exit;
     }
-    if (!empty($_GET["id"])) {
-        $id = $_GET["id"];
-        $deletion->bindParam(':id', $id);
-        $deletion->execute();
-    }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -54,19 +50,18 @@ require_once "db_settings.php";
     </thead>
     <tbody>
     <?php
-        /*$selection->execute();
-        $i = 1;
-        $row = $selection->fetchAll(PDO::FETCH_ASSOC);
-        $rows = $DBH->query("SELECT * FROM todolist_database.tasks", PDO::FETCH_ASSOC)->fetchAll();*/
-
             $selection->execute();
             $rows = $selection->fetchAll(PDO::FETCH_ASSOC);
             $i = 1;
-            /*var_dump($row);*/
+        if (!empty($_GET["id"])) {
+            $id = $_GET["id"];
+            $deletion->bindParam(':id', $id);
+            $deletion->execute();
+        }
             foreach ($rows as $row) { ?>
     <tr>    <td class="id"><?php echo $i; $i++; ?> </td>
             <td class="selection"> <?php echo $row['task']; ?> </td>
-            <td class="delete"> <a href="todolist_entry_page.php?delete_task=<?php echo $row['id'] ?>">x</a> </td>
+            <td class="delete"> <a href="todolist_entry_page.php?id=<?php echo $row['id'] ?>">x</a> </td>
                 <?php echo "<br/>"; ?>
     </tr> <?php } ?>
     </tbody>
