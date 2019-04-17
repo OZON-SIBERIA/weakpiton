@@ -13,12 +13,12 @@ require_once "db_settings.php";
     $insertion = $DBH->prepare("INSERT INTO todolist_database.tasks (task) VALUES (:task)");
     $selection = $DBH->prepare("SELECT task FROM todolist_database.tasks");
     /*$deletion = $DBH->prepare("DELETE");*/
-    $task = $_POST["task"];
-    if (!empty($task)) {
-    $insertion->bindParam(':task', $task);
-    $insertion->execute();
-    header("Location: /todolist_entry_page.php");
-    exit;
+    if (!empty($_POST["task"])) {
+        $task = $_POST["task"];
+        $insertion->bindParam(':task', $task);
+        $insertion->execute();
+        header("Location: /todolist_entry_page.php");
+        exit;
     }
 ?>
 <!DOCTYPE html>
