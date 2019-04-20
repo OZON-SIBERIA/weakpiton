@@ -12,7 +12,7 @@ require_once "db_settings.php";
     }
     $insertion = $DBH->prepare("INSERT INTO todolist_database.tasks (task) VALUES (:task)");
     $selection = $DBH->prepare("SELECT * FROM todolist_database.tasks");
-    $deletion = $DBH->prepare("DELETE FROM todolist_database.tasks WHERE (id)=(:id)");
+    $deletion = $DBH->prepare("DELETE FROM todolist_database.tasks WHERE id=:del_id");
 
     if (!empty($_POST["task"])) {
         $task = $_POST["task"];
@@ -21,10 +21,11 @@ require_once "db_settings.php";
         header("Location: /todolist_entry_page.php");
         exit;
     }
-    if (!empty($_POST["del_id"])) {
-        $del_id = $_POST["del_id"];
-        $deletion->bindParam(':id', $del_id);
+    if (!empty($_GET['del_id'])) {
+        $del_id = $_GET['del_id'];
+        $deletion->bindParam(':del_id', $del_id, PDO::PARAM_INT);
         $deletion->execute();
+        exit;
     }
 ?>
 <!DOCTYPE html>
@@ -63,9 +64,9 @@ require_once "db_settings.php";
             <td class="id"><?php echo $i; $i++; ?> </td>
             <td class="selection"> <?php echo $row['task']; ?> </td>
             <td class="delete">
-                <a href="todolist_entry_page.php?del_id=<?php echo $row['id']; ?>" class="del_btn">Delete</a>
+                <a title = "Delete task" href = "todolist_entry_page.php?del_id=<?php echo $row['id']; ?>" class="del_btn">X</a>
             </td>
-            <input  name="del_id" type="hidden" value="<?=$row['id']; ?>" class="del_id">
+            <input name="del_id" type="hidden" value="delete_task"<?php echo $row['id']; ?>" class="del_id">
             <?php echo "<br/>"; ?>
         </tr> <?php } ?>
     </tbody>
