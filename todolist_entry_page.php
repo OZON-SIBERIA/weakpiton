@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 require_once "db_settings.php";
     try {
         $DBH = new PDO("mysql:$host;dbname=todolist_database", $user, $pass);
@@ -40,10 +37,6 @@ require_once "db_settings.php";
     <h2> Old todolist for old pitons</h2>
 </div>
 <form method="post" action="todolist_entry_page.php" class="input_form">
-    <?php
-        if (isset($errors)) {
-    ?> <p> <?php echo $errors; ?></p>
-    <?php } ?>
     <input type="text" name="task" class="task_input">
     <button type="submit"  name="submit" id="add_button" class="add_button">Add Task</button>
 </form>
