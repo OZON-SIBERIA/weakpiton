@@ -60,7 +60,6 @@ require_once "db_settings.php";
             <td class="delete">
                 <a title = "Delete task" href = "todolist_entry_page.php?del_id=<?php echo $row['id']; ?>" class="del_btn">X</a>
             </td>
-
         </tr> <?php } ?>
     </tbody>
 </table>
