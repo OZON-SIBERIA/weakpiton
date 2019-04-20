@@ -7,9 +7,9 @@ require_once "db_settings.php";
     catch (PDOException $msg) {
         echo $msg->getMessage();
     }
-    $insertion = $DBH->prepare("INSERT INTO 'todolist_database.tasks' (task) VALUES (:task)");
-    $selection = $DBH->prepare("SELECT * FROM 'todolist_database.tasks'");
-    $deletion = $DBH->prepare("DELETE FROM 'todolist_database.tasks' WHERE 'id'=:del_id");
+    $insertion = $DBH->prepare("INSERT INTO todolist_database.tasks (task) VALUES (:task)");
+    $selection = $DBH->prepare("SELECT * FROM todolist_database.tasks");
+    $deletion = $DBH->prepare("DELETE FROM todolist_database.tasks WHERE 'id'=:del_id");
 
     if (!empty($_POST["task"])) {
         $task = $_POST["task"];
