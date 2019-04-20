@@ -7,9 +7,9 @@ require_once "db_settings.php";
     catch (PDOException $msg) {
         echo $msg->getMessage();
     }
-    $insertion = $DBH->prepare("INSERT INTO todolist_database.tasks (task) VALUES (:task)");
-    $selection = $DBH->prepare("SELECT * FROM todolist_database.tasks");
-    $deletion = $DBH->prepare("DELETE FROM todolist_database.tasks WHERE id=:del_id");
+    $insertion = $DBH->prepare("INSERT INTO 'todolist_database.tasks' (task) VALUES (:task)");
+    $selection = $DBH->prepare("SELECT * FROM 'todolist_database.tasks' WHERE 'task' = ".strval());
+    $deletion = $DBH->prepare("DELETE FROM 'todolist_database.tasks' WHERE 'id'=:del_id");
 
     if (!empty($_POST["task"])) {
         $task = $_POST["task"];
@@ -56,7 +56,7 @@ require_once "db_settings.php";
         foreach ($rows as $row) { ?>
         <tr>
             <td class="id"><?php echo $i; $i++; ?> </td>
-            <td class="selection"> <?php echo $row['task']; ?> </td>
+            <td class="selection"> <?php echo htmlspecialchars($row['task'],ENT_QUOTES); ?> </td>
             <td class="delete">
                 <a title = "Delete task" href = "todolist_entry_page.php?del_id=<?php echo $row['id']; ?>" class="del_btn">X</a>
             </td>
