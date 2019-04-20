@@ -33,6 +33,9 @@ require_once "db_settings.php";
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+<script type="text/javascript" src="jquery-3.4.0.js">
+
+</script>
 <div class="heading">
     <h2> Old todolist for old pitons</h2>
 </div>
