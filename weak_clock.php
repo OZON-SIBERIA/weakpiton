@@ -1,5 +1,7 @@
 <?php
 if (!empty($_POST("time_set")) & !empty($_POST("score_set"))) {
+    $time = new DateTime();
+    $score = new DateTime();
     $time = $_POST("time_set");
     $score = $_POST("score_set");
     echo $time;
@@ -10,7 +12,7 @@ if (!empty($_POST("time_set")) & !empty($_POST("score_set"))) {
 <html>
 <head>
     <title>Weak Clock</title>
-    <link rel="stylesheet" type="text/css" href="style_clock.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 <script type="text/javascript" src="jquery-3.4.0.js">
