@@ -1,13 +1,3 @@
-<?php
-if (!empty($_POST("time_set")) & !empty($_POST("score_set"))) {
-    $time = new DateTime();
-    $score = new DateTime();
-    $time = $_POST("time_set");
-    $score = $_POST("score_set");
-    echo $time;
-    echo $score;
-}
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,3 +14,13 @@ if (!empty($_POST("time_set")) & !empty($_POST("score_set"))) {
         <button type="submit"  name="submit_score" id="set_score_button" >Set Score</button>
     </form>
 </body>
+<?php/*
+if (!empty($_POST("time_set")) & !empty($_POST("score_set"))) {
+    $time = new DateTime();
+    $score = new DateTime();
+    $time = $_POST("time_set");
+    $score = $_POST("score_set");
+    echo $time;
+    echo $score;
+}*/
+?>
