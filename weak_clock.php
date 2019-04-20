@@ -1,7 +1,10 @@
-<?php/*
+<?php
 if (!empty($_POST("time_set")) & !empty($_POST("score_set"))) {
-    $time
-}*/
+    $time = $_POST("time_set");
+    $score = $_POST("score_set");
+    echo $time;
+    echo $score;
+}
 ?>
 <!DOCTYPE html>
 <html>
