@@ -34,14 +34,29 @@ require_once "db_settings.php";
 </head>
 <body>
 <script type="text/javascript" src="jquery-3.4.0.js">
-
+    function insertion() {
+        var task = $('#task').val();
+        $.ajax({
+            type: "POST",
+            url: todolist_entry_page.php,
+            data: {task:task}
+        })
+    }
+    function deletion() {
+        var del_id = $('#del_id').val();
+        $.ajax({
+            type: "GET",
+            url: todolist_entry_page.php,
+            data: {del_id:del_id}
+        })
+    }
 </script>
 <div class="heading">
     <h2> Old todolist for old pitons</h2>
 </div>
 <form method="post" action="todolist_entry_page.php" class="input_form">
     <input type="text" name="task" class="task_input">
-    <button type="submit"  name="submit" id="add_button" class="add_button">Add Task</button>
+    <button type="submit"  name="submit" id="add_button" class="add_button" onClick = "insertion()">Add Task</button>
 </form>
 <table id="tasks_table">
     <thead>
@@ -61,7 +76,7 @@ require_once "db_settings.php";
             <td class="id"><?php echo $i; $i++; ?> </td>
             <td class="selection"> <?php echo htmlspecialchars($row['task'],ENT_QUOTES); ?> </td>
             <td class="delete">
-                <a title = "Delete task" href = "todolist_entry_page.php?del_id=<?php echo $row['id']; ?>" class="del_btn">X</a>
+                <a title = "Delete task" href = "todolist_entry_page.php?del_id=<?php echo $row['id']; ?>" class="del_btn" onClick = "deletion()">X</a>
             </td>
         </tr> <?php } ?>
     </tbody>

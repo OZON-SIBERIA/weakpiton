@@ -9,17 +9,20 @@
 </script>
     <form method="post" action="weak_clock.php" class="input_form">
         <input type="time" name="time_set" class="time_input">
-        <button type="submit"  name="submit_time" id="set_time_button">Set Time</button>
-        <input type="input" name="score_set" class="score_input">
-        <button type="submit"  name="submit_score" id="set_score_button" >Set Score</button>
+        <input type= "text" name="score_set" class="score_input">
+        <button type="submit"  name="set" id="set_button">Set</button>
     </form>
 </body>
-<?php/*
-if (!empty($_POST("time_set")) & !empty($_POST("score_set"))) {
-    $time = new DateTime();
-    $time = $_POST("time_set");
+<?php
+$current_timezone = new DateTimeZone("Asia/Vladivostok");
+$time = new DateTime('00:00:00', $current_timezone);
+$time_end = new DateTime('00:00:00', $current_timezone);
+if (!empty($_POST("time_set")) && !empty($_POST("score_set"))) {
+    $time_set = $_POST("time_set");
+    $time = new DateTime($time_set, $current_timezone);
     $score = $_POST("score_set");
-    echo $time;
-    echo $score;
-}*/
+    while ($time != $time_end) {
+        $time->sub(new DateInterval('P1S'));
+    }
+}
 ?>
