@@ -15,14 +15,14 @@ require_once "db_settings.php";
         $task = $_POST["task"];
         $insertion->bindParam(':task', $task);
         $insertion->execute();
-        header("Location: /todolist_entry_page.php");
+        /*header("Location: /todolist_entry_page.php");*/
         exit;
     }
     if (!empty($_GET['del_id'])) {
         $del_id = $_GET['del_id'];
         $deletion->bindParam(':del_id', $del_id, PDO::PARAM_INT);
         $deletion->execute();
-        header("Location: /todolist_entry_page.php");
+        /*header("Location: /todolist_entry_page.php");*/
         exit;
     }
 ?>
