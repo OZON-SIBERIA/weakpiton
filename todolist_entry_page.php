@@ -42,7 +42,7 @@ catch (PDOException $msg) {
             <td class="id"><?php echo $i; $i++; ?> </td>
             <td class="selection"> <?php echo htmlspecialchars($row['task'],ENT_QUOTES); ?> </td>
             <td class="delete">
-                <a title = "Delete task" class="del_btn" onclick="deletion()">X</a>
+                <a title = "Delete task" class="del_btn" onclick="deletion(<?php echo $row['id']; ?>)">X</a>
             </td>
         </tr> <?php } ?>
     </tbody>
@@ -59,13 +59,13 @@ catch (PDOException $msg) {
             ins_request.send(task);
         }
     }
-    function deletion () {
+    function deletion (var del_id) {
         var del_request = new XMLHttpRequest();
         del_request.onreadystatechange = function() {
             if(del_request.readyState === 4 && del_request.status === 200) {
                 del_request.responseText;
             }
-            del_request.open('GET', 'deletion.php?del_id=<?php echo $row['id']; ?>');
+            del_request.open('GET', 'deletion.php?del_id=' + del_id);
             del_request.send();
         }
     }
