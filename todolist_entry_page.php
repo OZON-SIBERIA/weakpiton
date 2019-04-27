@@ -16,7 +16,6 @@ catch (PDOException $msg) {
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-
 <div class="heading">
     <h2> Old todolist for old pitons</h2>
 </div>
@@ -47,7 +46,7 @@ catch (PDOException $msg) {
         </tr> <?php } ?>
     </tbody>
 </table>
-<script type="text/javascript" src="jquery-3.4.0.js">
+<script>
     function insertion () {
         var task = document.getElementById("task");
         var ins_request = new XMLHttpRequest();
