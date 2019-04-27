@@ -59,7 +59,8 @@ catch (PDOException $msg) {
             ins_request.send(task);
         }
     }
-    function deletion (var del_id) {
+    var del_id;
+    function deletion (del_id) {
         var del_request = new XMLHttpRequest();
         del_request.onreadystatechange = function() {
             if(del_request.readyState === 4 && del_request.status === 200) {
