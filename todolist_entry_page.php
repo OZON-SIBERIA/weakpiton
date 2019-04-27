@@ -1,7 +1,5 @@
 <?php
 require_once "db_settings.php";
-require_once "insertion.php";
-require_once "deletion.php";
 try {
     $DBH = new PDO("mysql:$host;dbname=todolist_database", $user, $pass);
     $DBH->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION, PDO::ATTR_EMULATE_PREPARES, false);
@@ -18,30 +16,13 @@ catch (PDOException $msg) {
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<script type="text/javascript" src="jquery-3.4.0.js">
-    function insertion() {
-        var task = $('#task').val();
-        $.ajax({
-            type: "POST",
-            url: 'insertion.php',
-            data: {task:task}
-        })
-    }
-    function deletion() {
-        var del_id = $('#del_id').val();
-        $.ajax({
-            type: "GET",
-            url: 'deletion.php',
-            data: {del_id:del_id}
-        })
-    }
-</script>
+
 <div class="heading">
     <h2> Old todolist for old pitons</h2>
 </div>
 <form method="post" action="todolist_entry_page.php" class="input_form">
     <input type="text" name="task" class="task_input">
-    <button type="submit"  name="submit" id="add_button" class="add_button" onClick = "insertion()">Add Task</button>
+    <button type="submit"  name="submit" id="add_button" class="add_button" onclick="insertion()">Add Task</button>
 </form>
 <table id="tasks_table">
     <thead>
@@ -53,18 +34,41 @@ catch (PDOException $msg) {
     </thead>
     <tbody>
     <?php
-            $selection->execute();
-            $rows = $selection->fetchAll(PDO::FETCH_ASSOC);
-            $i = 1;
+    $selection->execute();
+    $rows = $selection->fetchAll(PDO::FETCH_ASSOC);
+    $i = 1;
         foreach ($rows as $row) { ?>
         <tr>
             <td class="id"><?php echo $i; $i++; ?> </td>
             <td class="selection"> <?php echo htmlspecialchars($row['task'],ENT_QUOTES); ?> </td>
             <td class="delete">
-                <a title = "Delete task" href = "todolist_entry_page.php?del_id=<?php echo $row['id']; ?>" class="del_btn" onClick = "deletion()">X</a>
+                <a title = "Delete task" class="del_btn" onclick="deletion()">X</a>
             </td>
         </tr> <?php } ?>
     </tbody>
 </table>
+<script type="text/javascript" src="jquery-3.4.0.js">
+    function insertion () {
+        var task = document.getElementById("task");
+        var ins_request = new XMLHttpRequest();
+        ins_request.onreadystatechange = function() {
+            if(ins_request.readyState === 4 && ins_request.status === 200) {
+                ins_request.responseText;
+            }
+            ins_request.open('POST', 'insertion.php');
+            ins_request.send(task);
+        }
+    }
+    function deletion () {
+        var del_request = new XMLHttpRequest();
+        del_request.onreadystatechange = function() {
+            if(del_request.readyState === 4 && del_request.status === 200) {
+                del_request.responseText;
+            }
+            del_request.open('GET', 'deletion.php?del_id=<?php echo $row['id']; ?>');
+            del_request.send();
+        }
+    }
+</script>
 </body>
 </html>

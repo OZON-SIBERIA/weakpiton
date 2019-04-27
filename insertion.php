@@ -12,7 +12,6 @@ if (!empty($_POST["task"])) {
     $task = $_POST["task"];
     $insertion->bindParam(':task', $task);
     $insertion->execute();
-    /*header("Location: /todolist_entry_page.php");*/
     exit;
 }
 ?>
