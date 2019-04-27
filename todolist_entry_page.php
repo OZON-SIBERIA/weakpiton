@@ -22,7 +22,7 @@ catch (PDOException $msg) {
 </div>
 <form class="input_form">
     <input type="text" name="task" class="task_input">
-    <button type="submit"  name="submit" id="add_button" class="add_button" onclick="insertion()">Add Task</button>
+    <button type="submit"  name="submit" id="add_button" class="add_button" onclick=insertion()>Add Task</button>
 </form>
 <table id="tasks_table">
     <thead>
@@ -42,7 +42,7 @@ catch (PDOException $msg) {
             <td class="id"><?php echo $i; $i++; ?> </td>
             <td class="selection"> <?php echo htmlspecialchars($row['task'],ENT_QUOTES); ?> </td>
             <td class="delete" >
-                <button title="Delete task" class="del_btn" onclick="deletion(<?php echo $row['id']; ?>)">X</button>
+                <button title="Delete task" class="del_btn" onclick=deletion(<?php echo $row['id']; ?>)>X</button>
             </td>
         </tr> <?php } ?>
     </tbody>
