@@ -20,7 +20,7 @@ catch (PDOException $msg) {
 <div class="heading">
     <h2> Old todolist for old pitons</h2>
 </div>
-<form method="post" action="todolist_entry_page.php" class="input_form">
+<form class="input_form">
     <input type="text" name="task" class="task_input">
     <button type="submit"  name="submit" id="add_button" class="add_button" onclick="insertion()">Add Task</button>
 </form>
