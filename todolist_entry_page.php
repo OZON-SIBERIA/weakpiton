@@ -41,8 +41,8 @@ catch (PDOException $msg) {
         <tr>
             <td class="id"><?php echo $i; $i++; ?> </td>
             <td class="selection"> <?php echo htmlspecialchars($row['task'],ENT_QUOTES); ?> </td>
-            <td class="delete">
-                <a title = "Delete task" class="del_btn" onclick="deletion(<?php echo $row['id']; ?>)">X</a>
+            <td class="delete" >
+                <button title="Delete task" class="del_btn" onclick="deletion(<?php echo $row['id']; ?>)">X</button>
             </td>
         </tr> <?php } ?>
     </tbody>
