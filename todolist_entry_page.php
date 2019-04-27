@@ -52,22 +52,22 @@ catch (PDOException $msg) {
         var ins_request = new XMLHttpRequest();
         ins_request.onreadystatechange = function() {
             if(ins_request.readyState === 4 && ins_request.status === 200) {
-                ins_request.responseText;
+                console.log(ins_request.responseText);
             }
-            ins_request.open('POST', 'insertion.php');
-            ins_request.send(task);
         }
+        ins_request.open('POST', 'insertion.php');
+        ins_request.send(task);
     }
     var del_id;
     function deletion (del_id) {
         var del_request = new XMLHttpRequest();
         del_request.onreadystatechange = function() {
             if(del_request.readyState === 4 && del_request.status === 200) {
-                del_request.responseText;
+                console.log(del_request.responseText);
             }
-            del_request.open('GET', 'deletion.php?del_id=' + del_id);
-            del_request.send();
         }
+        del_request.open('GET', 'deletion.php?del_id=' + del_id);
+        del_request.send();
     }
 </script>
 </body>
