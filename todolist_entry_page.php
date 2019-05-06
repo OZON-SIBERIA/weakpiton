@@ -54,7 +54,6 @@
     function insertion () {
         var task = document.getElementById("task");
         var ins_request = new XMLHttpRequest();
-        ins_request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         ins_request.onreadystatechange = function() {
             if(ins_request.readyState === 4 && ins_request.status === 200) {
                 console.log(task);
@@ -63,6 +62,7 @@
             }
         }
         ins_request.open('POST', 'insertion.php', true);
+        ins_request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         ins_request.send(task);
     }
     function deletion (id) {
