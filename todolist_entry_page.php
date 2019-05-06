@@ -10,7 +10,7 @@
 </div>
 <form class="input_form" method="post">
     <input type="text" name="task" class="task_input">
-    <button type="submit"  name="submit" id="add_button" class="add_button" formaction="insertion()">Add Task</button>
+    <button type="submit"  name="submit" id="add_button" class="add_button" onclick="insertion()">Add Task</button>
 </form>
 <table id="tasks_table">
     <thead>
