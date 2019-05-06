@@ -14,4 +14,3 @@ if (!empty($_POST["task"])) {
     $insertion->execute();
     exit;
 }
-?>

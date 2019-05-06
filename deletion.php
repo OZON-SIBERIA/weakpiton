@@ -12,6 +12,5 @@ if (!empty($_GET['id'])) {
     $id = $_GET['id'];
     $deletion->bindParam(':id', $id, PDO::PARAM_INT);
     $deletion->execute();
-    /*header("Location: /todolist_entry_page.php");*/
     exit;
 }
