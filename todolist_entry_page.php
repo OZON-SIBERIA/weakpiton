@@ -23,7 +23,6 @@
     <tbody id="data"> </tbody>
 </table>
 <script>
-    var del_id;
     function selection () {
         var sel_request = new XMLHttpRequest();
         sel_request.open('GET', 'selection.php');
@@ -37,11 +36,11 @@
                 var i = 1;
                 for (var a = 0; a < data.length; a++) {
                     var task = data[a].task;
-                    var id = data[a].id;
+                    var del_id = data[a].id;
                     html += "<tr>";
                     html += "<td class=\"id\">" + i + "</td>";
                     html += "<td class=\"selection\">" + task + "</td>";
-                    html += "<td class=\"delete\" >" + "<button title=\"Delete task\" class=\"del_btn\" onclick=deletion(id)>X</button>" + "</td>";
+                    html += "<td class=\"delete\" >" + "<button title=\"Delete task\" class=\"del_btn\" onclick=deletion(del_id)>X</button>" + "</td>";
                     html += "</tr>";
                     i++;
                 }
