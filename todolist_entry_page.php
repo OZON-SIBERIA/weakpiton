@@ -25,7 +25,7 @@
 <script>
     function selection () {
         var sel_request = new XMLHttpRequest();
-        sel_request.open('GET', 'selection.php');
+        sel_request.open('GET', 'selection.php', true);
         sel_request.send();
         sel_request.onreadystatechange = function() {
             if(sel_request.readyState === 4 && sel_request.status === 200) {
@@ -54,6 +54,7 @@
     function insertion () {
         var task = document.getElementById("task");
         var ins_request = new XMLHttpRequest();
+        ins_request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         ins_request.onreadystatechange = function() {
             if(ins_request.readyState === 4 && ins_request.status === 200) {
                 console.log(task);
@@ -61,7 +62,7 @@
                 selection();
             }
         }
-        ins_request.open('POST', 'insertion.php');
+        ins_request.open('POST', 'insertion.php', true);
         ins_request.send(task);
     }
     function deletion (id) {
@@ -73,7 +74,7 @@
                 selection();
             }
         }
-        del_request.open('GET', 'deletion.php?id=' + id);
+        del_request.open('GET', 'deletion.php?id=' + id, true);
         del_request.send();
     }
 </script>
