@@ -7,10 +7,10 @@ try {
 catch (PDOException $msg) {
     echo $msg->getMessage();
 }
-$deletion = $DBH->prepare("DELETE FROM todolist_database.tasks2 WHERE id=:del_id");
-if (!empty($_GET['del_id'])) {
-    $del_id = $_GET['del_id'];
-    $deletion->bindParam(':del_id', $del_id, PDO::PARAM_INT);
+$deletion = $DBH->prepare("DELETE FROM todolist_database.tasks2 WHERE id=:id");
+if (!empty($_GET['id'])) {
+    $del_id = $_GET['id'];
+    $deletion->bindParam(':id', $id, PDO::PARAM_INT);
     $deletion->execute();
     /*header("Location: /todolist_entry_page.php");*/
     exit;
