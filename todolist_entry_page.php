@@ -3,7 +3,6 @@
 <head>
     <title>Old Todolist</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src = "prototype.js"></script>
 </head>
 <body onload = "selection()">
 <div class="heading">
@@ -21,32 +20,34 @@
         <th>Delete</th>
     </tr>
     </thead>
-    <tbody>
-    <?php
-    $i = 1;
-    foreach ($rows as $row) { ?>
-        <tr>
-            <td class="id"><?php echo $i; $i++; ?> </td>
-            <td class="selection"> <?php echo htmlspecialchars($row['task'],ENT_QUOTES); ?> </td>
-            <td class="delete" >
-                <button title="Delete task" class="del_btn" onclick=deletion(<?php echo $row['id']; ?>)>X</button>
-            </td>
-        </tr> <?php } ?>
-    </tbody>
+    <tbody id="data"> </tbody>
 </table>
 <script>
     var del_id;
     function selection () {
         var sel_request = new XMLHttpRequest();
+        sel_request.open('GET', 'selection.php');
+        sel_request.send();
         sel_request.onreadystatechange = function() {
             if(sel_request.readyState === 4 && sel_request.status === 200) {
                 console.log(sel_request.responseText);
                 var data = JSON.parse(sel_request.responseText);
                 console.log(data);
+                var html = "";
+                var i = 1;
+                for (var a = 0; a < data.length; a++) {
+                    var task = data[a].task;
+                    var id = data[a].id;
+                    html += "<tr>";
+                    html += "<td class=\"id\">" + i + "</td>";
+                    html += "<td class=\"selection\">" + task + "</td>";
+                    html += "<td class=\"delete\" >" + "<button title=\"Delete task\" class=\"del_btn\" onclick=deletion(id)>X</button>" + "</td>";
+                    html += "</tr>";
+                    i++;
+                }
+                document.getElementById("data").innerHTML += html;
             }
         }
-        sel_request.open('GET', 'selection.php');
-        sel_request.send();
     }
     function insertion () {
         var task = document.getElementById("task");
