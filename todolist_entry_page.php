@@ -41,7 +41,7 @@
                     html += "<tr>";
                     html += "<td class=\"id\">" + i + "</td>";
                     html += "<td class=\"selection\">" + task + "</td>";
-                    html += "<td class=\"delete\" >" + "<button title=\"Delete task\" class=\"del_btn\" onclick=deletion(id)>" + "X" + "</button>" + "</td>";
+                    html += "<td class=\"delete\" >" + "<button title=\"Delete task\" class=\"del_btn\" onclick=deletion(" + id + ")>" + "X" + "</button>" + "</td>";
                     html += "</tr>";
                     i++;
                 }
@@ -65,7 +65,9 @@
         var del_request = new XMLHttpRequest();
         del_request.onreadystatechange = function() {
             if(del_request.readyState === 4 && del_request.status === 200) {
+                console.log(id);
                 console.log(del_request.responseText);
+                selection();
             }
         }
         del_request.open('GET', 'deletion.php?id=' + id);
