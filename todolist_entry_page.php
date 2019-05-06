@@ -65,7 +65,6 @@
         del_request.onreadystatechange = function() {
             if(del_request.readyState === 4 && del_request.status === 200) {
                 console.log(del_request.responseText);
-                selection();
             }
         }
         del_request.open('GET', 'deletion.php?id=' + id);
