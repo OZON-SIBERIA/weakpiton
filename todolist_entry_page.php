@@ -47,7 +47,7 @@
                 }
                 var nuller = "";
                 document.getElementById("data").innerHTML = nuller;
-                document.getElementById("data").innerHTML += html;
+                document.getElementById("data").innerHTML = html;
             }
         }
     }
