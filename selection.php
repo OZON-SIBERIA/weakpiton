@@ -7,11 +7,7 @@ try {
 catch (PDOException $msg) {
     echo $msg->getMessage();
 }
-$insertion = $DBH->prepare("INSERT INTO todolist_database.tasks2 (task) VALUES (:task)");
-if (!empty($_POST["task"])) {
-    $task = $_POST["task"];
-    $insertion->bindParam(':task', $task);
-    $insertion->execute();
-    exit;
-}
-?>
+$selection = $DBH->prepare("SELECT * FROM todolist_database.tasks2");
+$selection->execute();
+$rows = $selection->fetchAll(PDO::FETCH_ASSOC);
+echo $rows;
