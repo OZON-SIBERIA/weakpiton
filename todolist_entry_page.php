@@ -45,7 +45,8 @@
                     html += "</tr>";
                     i++;
                 }
-                document.getElementById("data").innerHTML += "";
+                var nuller = "";
+                document.getElementById("data").innerHTML = nuller;
                 document.getElementById("data").innerHTML += html;
             }
         }
