@@ -36,11 +36,11 @@
                 var i = 1;
                 for (var a = 0; a < data.length; a++) {
                     var task = data[a].task;
-                    var del_id = data[a].id;
+                    var id = data[a].id;
                     html += "<tr>";
                     html += "<td class=\"id\">" + i + "</td>";
                     html += "<td class=\"selection\">" + task + "</td>";
-                    html += "<td class=\"delete\" >" + "<button title=\"Delete task\" class=\"del_btn\" onclick=deletion(del_id)>X</button>" + "</td>";
+                    html += "<td class=\"delete\" >" + "<button title=\"Delete task\" class=\"del_btn\" onclick=deletion(id)>X</button>" + "</td>";
                     html += "</tr>";
                     i++;
                 }
@@ -60,7 +60,7 @@
         ins_request.open('POST', 'insertion.php');
         ins_request.send(task);
     }
-    function deletion (del_id) {
+    function deletion (id) {
         var del_request = new XMLHttpRequest();
         del_request.onreadystatechange = function() {
             if(del_request.readyState === 4 && del_request.status === 200) {
@@ -68,7 +68,7 @@
                 selection();
             }
         }
-        del_request.open('GET', 'deletion.php?del_id=' + del_id);
+        del_request.open('GET', 'deletion.php?id=' + id);
         del_request.send();
     }
 </script>
