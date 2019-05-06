@@ -44,7 +44,7 @@
                     html += "</tr>";
                     i++;
                 }
-                document.getElementById("data").innerHTML += html;
+                document.getElementById("data").innerHTML = html;
             }
         }
     }
