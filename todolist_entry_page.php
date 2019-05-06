@@ -52,7 +52,14 @@
         }
     }
     function insertion () {
-        var task = document.getElementById("task");
+        <?php
+        $task = "";
+        if (!empty($_POST["task"])) {
+            $task = $_POST["task"];
+            exit;
+        }
+        ?>
+        var task = <?php echo $task; ?>
         var ins_request = new XMLHttpRequest();
         ins_request.onreadystatechange = function() {
             if(ins_request.readyState === 4 && ins_request.status === 200) {
