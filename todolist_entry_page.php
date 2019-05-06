@@ -8,7 +8,7 @@
 <div class="heading">
     <h2> Old todolist for old pitons</h2>
 </div>
-<form class="input_form">
+<form class="input_form" method="post">
     <input type="text" name="task" class="task_input">
     <button type="submit"  name="submit" id="add_button" class="add_button" onclick=insertion()>Add Task</button>
 </form>
@@ -54,6 +54,7 @@
         var ins_request = new XMLHttpRequest();
         ins_request.onreadystatechange = function() {
             if(ins_request.readyState === 4 && ins_request.status === 200) {
+                console.log(task);
                 console.log(ins_request.responseText);
                 selection();
             }
