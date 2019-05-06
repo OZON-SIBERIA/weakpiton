@@ -23,7 +23,6 @@
     <tbody id="data"> </tbody>
 </table>
 <script>
-    var html = "";
     function selection () {
         var sel_request = new XMLHttpRequest();
         sel_request.open('GET', 'selection.php');
@@ -33,7 +32,7 @@
                 console.log(sel_request.responseText);
                 var data = JSON.parse(sel_request.responseText);
                 console.log(data);
-
+                var html = "";
                 var i = 1;
                 for (var a = 0; a < data.length; a++) {
                     var task = data[a].task;
