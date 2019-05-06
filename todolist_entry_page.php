@@ -41,7 +41,7 @@
                     html += "<tr>";
                     html += "<td class=\"id\">" + i + "</td>";
                     html += "<td class=\"selection\">" + task + "</td>";
-                    html += "<td class=\"delete\" >" + "<button title=\"Delete task\" class=\"del_btn\" onclick=deletion(id)>X</button>" + "</td>";
+                    html += "<td class=\"delete\" >" + "<button title=\"Delete task\" class=\"del_btn\" onclick=deletion(id)>" + "X" + "</button>" + "</td>";
                     html += "</tr>";
                     i++;
                 }
