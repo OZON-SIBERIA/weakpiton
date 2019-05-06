@@ -37,6 +37,7 @@
                 for (var a = 0; a < data.length; a++) {
                     var task = data[a].task;
                     var id = data[a].id;
+                    console.log(id);
                     html += "<tr>";
                     html += "<td class=\"id\">" + i + "</td>";
                     html += "<td class=\"selection\">" + task + "</td>";
