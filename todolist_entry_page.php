@@ -50,7 +50,7 @@
         }
     }
     function insertion () {
-        var task = document.getElementById("task");
+        var task = document.getElementById("task").value;
         var ins_request = new XMLHttpRequest();
         ins_request.onreadystatechange = function() {
             if(ins_request.readyState === 4 && ins_request.status === 200) {
