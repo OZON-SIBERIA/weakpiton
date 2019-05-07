@@ -51,10 +51,10 @@
     }
     function insertion () {
         var task = document.getElementById("task").value;
+        console.log(task);
         var ins_request = new XMLHttpRequest();
         ins_request.onreadystatechange = function() {
             if(ins_request.readyState === 4 && ins_request.status === 200) {
-                console.log(task);
                 console.log(ins_request.responseText);
                 selection();
             }
