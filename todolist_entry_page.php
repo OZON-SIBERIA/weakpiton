@@ -60,8 +60,9 @@
             }
         }
         ins_request.open('POST', 'insertion.php', true);
-        ins_request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        ins_request.send(task);
+        ins_request.setRequestHeader("Content-Type", "application/json");
+        ins_request.send(JSON.stringify({task:task}));
+        ins_request.send();
     }
     function deletion (id) {
         var del_request = new XMLHttpRequest();
