@@ -9,7 +9,7 @@
     <h2> Old todolist for old pitons</h2>
 </div>
 <form class="input_form" method="post">
-    <input type="text" name="task" class="task_input">
+    <input id = "task" type="text" name="task" class="task_input">
     <button type="submit"  name="submit" id="add_button" class="add_button" onclick="insertion()">Add Task</button>
 </form>
 <table id="tasks_table">
@@ -45,21 +45,12 @@
                     html += "</tr>";
                     i++;
                 }
-                var nuller = "";
-                document.getElementById("data").innerHTML = nuller;
                 document.getElementById("data").innerHTML = html;
             }
         }
     }
     function insertion () {
-        <?php
-        $task = "";
-        if (!empty($_POST["task"])) {
-            $task = $_POST["task"];
-            exit;
-        }
-        ?>
-        var task = <?php echo $task; ?>;
+        var task = document.getElementById("task");
         var ins_request = new XMLHttpRequest();
         ins_request.onreadystatechange = function() {
             if(ins_request.readyState === 4 && ins_request.status === 200) {
