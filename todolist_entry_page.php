@@ -63,11 +63,14 @@
         ins_request.setRequestHeader("Content-Type", "application/json");
         ins_request.send(JSON.stringify({task:task}));
     }
-
     var form = document.getElementById("form");
-    form.addEventListener("submit", insertion);
-    form.addEventListener("enter", insertion);
-
+    form.addEventListener("submit", function(form_event) {
+       if(form_event.keyCode === 13) {
+           form_event.preventDefault();
+           document.getElementById("add_button").click();
+           insertion();
+       }
+    };
     function deletion (id) {
         var del_request = new XMLHttpRequest();
         del_request.onreadystatechange = function() {
