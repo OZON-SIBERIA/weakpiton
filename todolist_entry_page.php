@@ -82,7 +82,7 @@
             document.getElementById("add_button").click();
             insertion();
         }
-    }
+    });
 </script>
 </body>
 </html>
