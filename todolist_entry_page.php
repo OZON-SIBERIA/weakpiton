@@ -10,7 +10,7 @@
 </div>
 <form id = "form" class="input_form" method="post">
     <input id = "task" type="text" name="task" class="task_input">
-    <button type="submit"  name="submit" id="add_button" class="add_button" onclick="event.stopPropagation(); insertion(); ">Add Task</button>
+    <button type="submit"  name="submit" id="add_button" class="add_button" onclick="insertion()">Add Task</button>
 </form>
 <table id="tasks_table">
     <thead>
@@ -23,7 +23,7 @@
     <tbody id="data"> </tbody>
 </table>
 <script>
-    $("form").submit(function(e) {e.preventDefault()});
+
     function selection () {
         var sel_request = new XMLHttpRequest();
         sel_request.open('GET', 'selection.php', true);
@@ -50,6 +50,10 @@
             }
         }
     }
+    $("form").submit(
+        function(e) {
+            e.preventDefault()
+        };
     function insertion () {
         var task = document.getElementById("task").value;
         console.log(task);
@@ -64,6 +68,7 @@
         ins_request.setRequestHeader("Content-Type", "application/json");
         ins_request.send(JSON.stringify({task:task}));
     }
+    )
     function deletion (id) {
         var del_request = new XMLHttpRequest();
         del_request.onreadystatechange = function() {
