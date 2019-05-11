@@ -10,7 +10,7 @@
 </div>
 <form id = "form" class="input_form" method="post">
     <input id = "task" type="text" name="task" class="task_input">
-    <button type="submit"  name="submit" id="add_button" class="add_button" onclick="insertion()">Add Task</button>
+    <button type="submit"  name="submit" id="add_button" class="add_button">Add Task</button>
 </form>
 <table id="tasks_table">
     <thead>
@@ -49,10 +49,9 @@
             }
         }
     }
-    $("form").submit(
-        function(e) {
-            e.preventDefault()
-        };
+    var form = document.getElementById("form");
+    form.addEventListener("submit", insertion);
+    form.addEventListener("enter", insertion);
     function insertion () {
         var task = document.getElementById("task").value;
         console.log(task);
@@ -66,8 +65,7 @@
         ins_request.open('POST', 'insertion.php', true);
         ins_request.setRequestHeader("Content-Type", "application/json");
         ins_request.send(JSON.stringify({task:task}));
-    };
-    )
+    }
     function deletion (id) {
         var del_request = new XMLHttpRequest();
         del_request.onreadystatechange = function() {
