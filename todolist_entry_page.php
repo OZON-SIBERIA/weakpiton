@@ -23,7 +23,7 @@
     <tbody id="data"> </tbody>
 </table>
 <script>
-    $("#form").submit(function(e) {e.preventDefault()};
+    $("#form").submit(function(e) {e.preventDefault()});
     function selection () {
         var sel_request = new XMLHttpRequest();
         sel_request.open('GET', 'selection.php', true);
