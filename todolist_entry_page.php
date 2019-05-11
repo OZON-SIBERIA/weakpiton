@@ -23,7 +23,6 @@
     <tbody id="data"> </tbody>
 </table>
 <script>
-
     function selection () {
         var sel_request = new XMLHttpRequest();
         sel_request.open('GET', 'selection.php', true);
@@ -67,7 +66,7 @@
         ins_request.open('POST', 'insertion.php', true);
         ins_request.setRequestHeader("Content-Type", "application/json");
         ins_request.send(JSON.stringify({task:task}));
-    }
+    };
     )
     function deletion (id) {
         var del_request = new XMLHttpRequest();
