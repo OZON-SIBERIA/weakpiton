@@ -49,9 +49,6 @@
             }
         }
     }
-    var form = document.getElementById("form");
-    form.addEventListener("submit", insertion);
-    form.addEventListener("enter", insertion);
     function insertion () {
         var task = document.getElementById("task").value;
         console.log(task);
@@ -66,6 +63,11 @@
         ins_request.setRequestHeader("Content-Type", "application/json");
         ins_request.send(JSON.stringify({task:task}));
     }
+
+    var form = document.getElementById("form");
+    form.addEventListener("submit", insertion);
+    form.addEventListener("enter", insertion);
+
     function deletion (id) {
         var del_request = new XMLHttpRequest();
         del_request.onreadystatechange = function() {
