@@ -56,6 +56,7 @@
         ins_request.onreadystatechange = function() {
             if(ins_request.readyState === 4 && ins_request.status === 200) {
                 console.log(ins_request.responseText);
+                console.log("ПИТОН СОСТОЯЛСЯ");
                 selection();
             }
         }
