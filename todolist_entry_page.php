@@ -8,9 +8,9 @@
 <div class="heading">
     <h2> Old todolist for old pitons</h2>
 </div>
-<form onclick="event.stopPropagation();" class="input_form" method="post">
+<form class="input_form" method="post">
     <input id = "task" type="text" name="task" class="task_input">
-    <button type="submit"  name="submit" id="add_button" class="add_button" onclick="insertion()">Add Task</button>
+    <button type="submit"  name="submit" id="add_button" class="add_button" onclick="insertion(); event.stopPropagation();">Add Task</button>
 </form>
 <table id="tasks_table">
     <thead>
