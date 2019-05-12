@@ -8,7 +8,7 @@ try {
 catch (PDOException $msg) {
     echo $msg->getMessage();
 }
-$insertion = $DBH->prepare("INSERT INTO todolist_database.tasks2 (task) VALUES (:task)");
+$insertion = $DBH->prepare("INSERT INTO todolist_database.tasks (task) VALUES (:task)");
 if (!empty($_POST["task"])) {
     json_decode($_POST["task"]);
     $task = $_POST["task"];

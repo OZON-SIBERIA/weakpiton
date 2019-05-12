@@ -7,7 +7,7 @@ try {
 catch (PDOException $msg) {
     echo $msg->getMessage();
 }
-$selection = $DBH->prepare("SELECT * FROM todolist_database.tasks2");
+$selection = $DBH->prepare("SELECT * FROM todolist_database.tasks");
 $selection->execute();
 $rows = $selection->fetchAll(PDO::FETCH_ASSOC);
 echo json_encode($rows);
