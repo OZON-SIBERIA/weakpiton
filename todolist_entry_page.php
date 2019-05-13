@@ -10,7 +10,7 @@
     <h2> Old todolist for old pitons</h2>
 </div>
 <form id = "form" class="input_form" method="post" action="insertion.php">
-    <input id = "task" type="text" name="task" class="task_input" placeholder="Enter task, would you kindly">
+    <input id = "task" type="text" name="task" class="task_input" placeholder="Would you kindly, add the task">
     <button type="submit"  name="submit" id="add_button" class="add_button">Add Task</button>
 </form>
 <table id="tasks_table">
