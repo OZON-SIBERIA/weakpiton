@@ -52,6 +52,7 @@
     function insertion (e) {
         e.preventDefault();
         var task = document.getElementById("task").value;
+        document.getElementById("task").value = '';
         var params = "task="+task;
         var ins_request = new XMLHttpRequest();
         ins_request.onreadystatechange = function() {
