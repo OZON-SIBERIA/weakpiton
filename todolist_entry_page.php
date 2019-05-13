@@ -31,8 +31,8 @@
         sel_request.onreadystatechange = function() {
             if(sel_request.readyState === 4 && sel_request.status === 200) {
                 console.log("ТРИ ВЯЛЫХ ПИТОНА");
+                console.log(sel_request.responseText);
                 var data = JSON.parse(sel_request.responseText);
-                console.log(data);
                 var html = "";
                 var i = 1;
                 for (var a = 0; a < data.length; a++) {
