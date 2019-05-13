@@ -3,6 +3,7 @@
 <head>
     <title>Old Todolist</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" type="image/jpg" href="/favicon.jpg"/>
 </head>
 <body onload = "selection()">
 <div class="heading">
