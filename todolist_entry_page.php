@@ -30,7 +30,6 @@
         sel_request.send();
         sel_request.onreadystatechange = function() {
             if(sel_request.readyState === 4 && sel_request.status === 200) {
-                console.log(sel_request.responseText);
                 console.log("ТРИ ВЯЛЫХ ПИТОНА");
                 var data = JSON.parse(sel_request.responseText);
                 console.log(data);
@@ -39,7 +38,6 @@
                 for (var a = 0; a < data.length; a++) {
                     var task = data[a].task;
                     var id = data[a].id;
-                    console.log(id);
                     html += "<tr>";
                     html += "<td class=\"id\">" + i + "</td>";
                     html += "<td class=\"selection\">" + task + "</td>";
@@ -59,7 +57,6 @@
         var ins_request = new XMLHttpRequest();
         ins_request.onreadystatechange = function() {
             if(ins_request.readyState === 4 && ins_request.status === 200) {
-                console.log(ins_request.responseText);
                 console.log("ПИТОН СОСТОЯЛСЯ");
                 selection();
             }
@@ -72,7 +69,6 @@
         var del_request = new XMLHttpRequest();
         del_request.onreadystatechange = function() {
             if(del_request.readyState === 4 && del_request.status === 200) {
-                console.log(del_request.responseText);
                 console.log("МИНУС ПИТОН");
                 selection();
             }
