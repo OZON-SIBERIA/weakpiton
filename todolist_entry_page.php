@@ -8,7 +8,7 @@
 <div class="heading">
     <h2> Old todolist for old pitons</h2>
 </div>
-<form id = "form" class="input_form" method="post">
+<form id = "form" class="input_form" method="post" action="insertion.php">
     <input id = "task" type="text" name="task" class="task_input">
     <button type="submit"  name="submit" id="add_button" class="add_button">Add Task</button>
 </form>
@@ -49,9 +49,10 @@
             }
         }
     }
-    function insertion () {
+    function insertion (e) {
+        e.preventDefault();
         var task = document.getElementById("task").value;
-        console.log(task);
+        var params = "name-"+task;
         var ins_request = new XMLHttpRequest();
         ins_request.onreadystatechange = function() {
             if(ins_request.readyState === 4 && ins_request.status === 200) {
@@ -61,8 +62,8 @@
             }
         }
         ins_request.open('POST', 'insertion.php', true);
-        ins_request.setRequestHeader("Content-Type", "application/json");
-        ins_request.send(JSON.stringify({task:task}));
+        ins_request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        ins_request.send(params);
     }
     function deletion (id) {
         var del_request = new XMLHttpRequest();
@@ -77,13 +78,8 @@
         del_request.send();
     }
     var form = document.getElementById("form");
-    form.addEventListener("submit", function(form_event) {
-        if(form_event.keyCode === 13) {
-            form_event.preventDefault();
-            document.getElementById("add_button").click();
-            insertion();
-        }
-    });
+    form.addEventListener('submit', insertion);
+
 </script>
 </body>
 </html>
