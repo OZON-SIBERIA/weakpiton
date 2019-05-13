@@ -10,7 +10,7 @@ catch (PDOException $msg) {
 }
 $insertion = $DBH->prepare("INSERT INTO todolist_database.tasks (task) VALUES (:task)");
 if (!empty($_POST["task"])) {
-    $task = $_POST["task"];
+    $task = htmlspecialchars($_POST["task"],ENT_QUOTES);
     $insertion->bindParam(':task', $task);
     $insertion->execute();
     exit;
